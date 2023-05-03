@@ -30,3 +30,16 @@ def data_for_work(input_list):
             new_list.append(item)
 
     return new_list
+
+
+def sorted_data(list_1):
+    """
+    Сортирует список по дате операции
+    :param list_1: отобранный список
+    :return: 5 последних операций
+    """
+    # сортирует список по дате
+    sorted_list = sorted(list_1, key=lambda a: a["date"])
+
+    # возвращаем список из 5 последних операций
+    return sorted_list[-5:]
