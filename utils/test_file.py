@@ -22,5 +22,5 @@ for item in c:
     print(item)
 
 # проверка вывода информации из словаря
-date = print_operation(c[0])
-# print(date)
+date = print_operation(c[1])
+

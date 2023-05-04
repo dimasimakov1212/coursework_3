@@ -59,5 +59,27 @@ def print_operation(dict_one):
     # вывод 1 строки в формате "дата назначение операции"
     print(date_out, dict_one['description'])
 
+    # преобразуем поле 'from'
+    try:
+        from_in = dict_one['from']
+        from_num = [num for num in from_in if num.isdigit()]
+        from_text = "".join([num for num in from_in if num.isalpha()])
+        num_len = len(from_num)
+
+        for item in range(6, num_len - 4):
+            from_num[item] = 'X'
+
+        num_1 = "".join(from_num)
+        num_print = ''
+        for i in range(0, num_len, 4):
+            num_print += num_1[i:i+4]
+            num_print += ' '
+
+    except KeyError:
+        from_in = 'Нет данных '
+
+
+    print(from_in)
+    print(from_text, num_print)
     return None
 
