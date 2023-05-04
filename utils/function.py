@@ -43,3 +43,17 @@ def sorted_data(list_1):
 
     # возвращаем список из 5 последних операций
     return sorted_list[-5:]
+
+
+def print_operation(dict_one):
+    """
+    Принимает на вход словарь с данными и выводит
+    в соответствии с требованиями
+    :param dict_one:
+    :return:
+    """
+    date_in = dict_one['date'][:10]
+    print(date_in)
+
+    return None
+
