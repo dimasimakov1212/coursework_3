@@ -52,8 +52,12 @@ def print_operation(dict_one):
     :param dict_one:
     :return:
     """
+    # преобразуем дату
     date_in = dict_one['date'][:10]
-    print(date_in)
+    date_out = date_in[-2:] + '.' + date_in[5:7] + '.' + date_in[:4]
+
+    # вывод 1 строки в формате "дата назначение операции"
+    print(date_out, dict_one['description'])
 
     return None
 
