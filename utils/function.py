@@ -56,7 +56,7 @@ def print_operation(dict_one):
     date_in = dict_one['date'][:10]
     date_out = date_in[-2:] + '.' + date_in[5:7] + '.' + date_in[:4]
 
-    # вывод 1 строки в формате "дата назначение операции"
+    # вывод 1 строки в формате "дата" "назначение операции"
     print(date_out, dict_one['description'])
 
     # преобразуем поле 'from'
@@ -64,22 +64,32 @@ def print_operation(dict_one):
         from_in = dict_one['from']
         from_num = [num for num in from_in if num.isdigit()]
         from_text = "".join([num for num in from_in if num.isalpha()])
-        num_len = len(from_num)
+        from_num_len = len(from_num)
 
-        for item in range(6, num_len - 4):
-            from_num[item] = 'X'
+        for item in range(6, from_num_len - 4):
+            from_num[item] = '*'
 
         num_1 = "".join(from_num)
-        num_print = ''
-        for i in range(0, num_len, 4):
-            num_print += num_1[i:i+4]
-            num_print += ' '
+        from_num_print = ''
+        for i in range(0, from_num_len, 4):
+            from_num_print += num_1[i:i+4]
+            from_num_print += ' '
+
+        from_print = from_text + ' ' + from_num_print
 
     except KeyError:
-        from_in = 'Нет данных '
+        from_print = 'Нет данных '
 
+    # преобразуем поле 'to'
+    to_in = dict_one['to']
+    to_num = "".join([num for num in to_in if num.isdigit()])
+    to_text = "".join([num for num in to_in if num.isalpha()])
 
-    print(from_in)
-    print(from_text, num_print)
+    to_num_print = '**' + to_num[-4:]
+    to_print = to_text + ' ' + to_num_print
+
+    # вывод второй строки в формате "откуда" -> "куда"
+    print(f"{from_print}-> {to_print}")
+
     return None
 
