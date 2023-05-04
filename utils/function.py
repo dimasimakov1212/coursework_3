@@ -66,15 +66,18 @@ def print_operation(dict_one):
         from_text = "".join([num for num in from_in if num.isalpha()])
         from_num_len = len(from_num)
 
+        # заменяем звездочками непечатаемые данные номера
         for item in range(6, from_num_len - 4):
             from_num[item] = '*'
 
+        # разделяем номер группами по 4 цифры
         num_1 = "".join(from_num)
         from_num_print = ''
         for i in range(0, from_num_len, 4):
             from_num_print += num_1[i:i+4]
             from_num_print += ' '
 
+        # итоговый вывод для печати "откуда"
         from_print = from_text + ' ' + from_num_print
 
     except KeyError:
@@ -85,11 +88,18 @@ def print_operation(dict_one):
     to_num = "".join([num for num in to_in if num.isdigit()])
     to_text = "".join([num for num in to_in if num.isalpha()])
 
+    # заменяем звездочками непечатаемые данные номера
     to_num_print = '**' + to_num[-4:]
+
+    # итоговый вывод для печати "куда"
     to_print = to_text + ' ' + to_num_print
 
     # вывод второй строки в формате "откуда" -> "куда"
     print(f"{from_print}-> {to_print}")
+
+    # вывод третьей строки в формате "сумма" "валюта"
+    print(dict_one['operationAmount']['amount'],
+          dict_one['operationAmount']['currency']['name'], end="\n")
 
     return None
 
