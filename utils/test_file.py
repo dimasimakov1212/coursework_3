@@ -1,4 +1,4 @@
-from function import import_data, data_for_work, sorted_data, print_operation
+from function import import_data, data_for_work, sorted_data, print_date
 from main import file_input
 
 # проверяем загрузку данных и вид данных
@@ -22,5 +22,5 @@ for item in c:
     print(item)
 
 # проверка вывода информации из словаря
-date = print_operation(c[0])
+date = print_date(c[0])
 

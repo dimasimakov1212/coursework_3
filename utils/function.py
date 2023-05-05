@@ -45,20 +45,37 @@ def sorted_data(list_1):
     return sorted_list[-5:]
 
 
-def print_operation(dict_one):
+def print_date(dict_one):
     """
     Принимает на вход словарь с данными и выводит
-    в соответствии с требованиями
+    в соответствии с требованиями дату
     :param dict_one:
-    :return:
+    :return: дата операции
     """
     # преобразуем дату
     date_in = dict_one['date'][:10]
     date_out = date_in[-2:] + '.' + date_in[5:7] + '.' + date_in[:4]
 
-    # вывод 1 строки в формате "дата" "назначение операции"
-    print(date_out, dict_one['description'])
+    return date_out
 
+
+def print_description(dict_one):
+    """
+    Принимает на вход словарь с данными и выводит
+    описание операции
+    :param dict_one:
+    :return: описание операции
+    """
+    return dict_one['description']
+
+
+def print_from(dict_one):
+    """
+    Принимает на вход словарь с данными и выводит
+    в соответствии с требованиями информацию откуда платеж
+    :param dict_one:
+    :return: откуда платеж
+    """
     # преобразуем поле 'from'
     try:
         from_in = dict_one['from']
@@ -83,6 +100,16 @@ def print_operation(dict_one):
     except KeyError:
         from_print = 'Нет данных '
 
+    return from_print
+
+
+def print_to(dict_one):
+    """
+    Принимает на вход словарь с данными и выводит
+    в соответствии с требованиями информацию куда платеж
+    :param dict_one:
+    :return: куда платеж
+    """
     # преобразуем поле 'to'
     to_in = dict_one['to']
     to_num = "".join([num for num in to_in if num.isdigit()])
@@ -94,12 +121,27 @@ def print_operation(dict_one):
     # итоговый вывод для печати "куда"
     to_print = to_text + ' ' + to_num_print
 
-    # вывод второй строки в формате "откуда" -> "куда"
-    print(f"{from_print}-> {to_print}")
+    return to_print
 
-    # вывод третьей строки в формате "сумма" "валюта"
-    print(dict_one['operationAmount']['amount'],
-          dict_one['operationAmount']['currency']['name'], end="\n")
 
-    return None
+def print_amount(dict_one):
+    """
+    Принимает на вход словарь с данными и выводит
+    в соответствии с требованиями информацию о сумме операции
+    :param dict_one:
+    :return: сумма операции
+    """
+
+    return dict_one['operationAmount']['amount']
+
+
+def print_currency(dict_one):
+    """
+    Принимает на вход словарь с данными и выводит
+    в соответствии с требованиями информацию о валюте операции
+    :param dict_one: 
+    :return: валюта операции
+    """
+    return dict_one['operationAmount']['currency']['name']
+
 
