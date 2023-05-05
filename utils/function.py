@@ -52,8 +52,10 @@ def print_date(dict_one):
     :param dict_one:
     :return: дата операции
     """
-    # преобразуем дату
+    # считываем дату операции в формате ГГГГ-ММ-ДД
     date_in = dict_one['date'][:10]
+
+    # преобразуем дату в формат ДД-ММ-ГГГГ
     date_out = date_in[-2:] + '.' + date_in[5:7] + '.' + date_in[:4]
 
     return date_out
@@ -76,11 +78,18 @@ def print_from(dict_one):
     :param dict_one:
     :return: откуда платеж
     """
-    # преобразуем поле 'from'
+
     try:
+        # получаем информацию откуда пришел платеж
         from_in = dict_one['from']
+
+        # выделяем номер
         from_num = [num for num in from_in if num.isdigit()]
+
+        # выделяем текст
         from_text = "".join([num for num in from_in if num.isalpha()])
+
+        # определяем длину номера
         from_num_len = len(from_num)
 
         # заменяем звездочками непечатаемые данные номера
@@ -97,6 +106,7 @@ def print_from(dict_one):
         # итоговый вывод для печати "откуда"
         from_print = from_text + ' ' + from_num_print
 
+    # в случае отсутствия информации откуда пришла операция
     except KeyError:
         from_print = 'Нет данных '
 
@@ -110,9 +120,13 @@ def print_to(dict_one):
     :param dict_one:
     :return: куда платеж
     """
-    # преобразуем поле 'to'
+    # принимаем информацию куда осуществлен платеж
     to_in = dict_one['to']
+
+    # выделяем номер
     to_num = "".join([num for num in to_in if num.isdigit()])
+
+    # выделяем текст
     to_text = "".join([num for num in to_in if num.isalpha()])
 
     # заменяем звездочками непечатаемые данные номера
