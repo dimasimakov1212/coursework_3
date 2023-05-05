@@ -15,13 +15,13 @@ data_start = data_for_work(data_input)
 data_out = sorted_data(data_start)
 
 # вывод информации по операциям
-for item in range(4, 0, -1):
+for item in range(4, -1, -1):
 
     # вывод 1 строки в формате "дата" "назначение операции"
-    print(f"{print_date(item)} {print_description(item)}")
+    print(f"{print_date(data_out[item])} {print_description(data_out[item])}")
 
     # вывод второй строки в формате "откуда" -> "куда"
-    print(f"{print_from(item)}-> {print_to(item)}")
+    print(f"{print_from(data_out[item])}-> {print_to(data_out[item])}")
 
     # вывод третьей строки в формате "сумма" "валюта"
-    print(f"{print_amount(item)} {print_currency(item)}")
+    print(f"{print_amount(data_out[item])} {print_currency(data_out[item])}\n")
