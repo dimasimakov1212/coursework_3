@@ -4,7 +4,7 @@ from utils import function
 if __name__ == '__function__':
     unittest.function()
 
-class TestArrs(unittest.TestCase):
+class TestFunction(unittest.TestCase):
 
     def test_print_date(self):
 
