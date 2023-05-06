@@ -69,3 +69,13 @@ class TestFunction(unittest.TestCase):
 
         self.assertEqual(function.print_currency(dict_in), str_out)
 
+    def test_import_data(self):
+        file_in = "./utils/json_for_test.json"
+
+        file_out = [{'id': 441945886, 'state': 'EXECUTED',
+                     'date': '2019-08-26T10:50:58.294041',
+                     'operationAmount': {'amount': '31957.58', 'currency': {'name': 'руб.', 'code': 'RUB'}}}
+                    ]
+
+        self.assertEqual(function.import_data(file_in), file_out)
+
