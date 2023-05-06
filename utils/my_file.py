@@ -5,6 +5,7 @@ from main import file_input
 a = (import_data(file_input))
 b = a[0]
 print(b)
+print(a[13])
 for key, item in b.items():
     print(key, item)
 
