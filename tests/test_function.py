@@ -35,3 +35,10 @@ class TestFunction(unittest.TestCase):
 
         self.assertEqual(function.sorted_data(list_in), list_out)
 
+    def test_print_description(self):
+        dict_in = {'description': 'Перевод организации'}
+
+        str_out = 'Перевод организации'
+
+        self.assertEqual(function.print_description(dict_in), str_out)
+
