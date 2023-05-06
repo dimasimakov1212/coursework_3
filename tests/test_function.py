@@ -43,9 +43,12 @@ class TestFunction(unittest.TestCase):
         self.assertEqual(function.print_description(dict_in), str_out)
 
     def test_print_from(self):
-        dict_in = {'from': 'Maestro 1596837868705199'}
+        dict_in_1 = {'from': 'Maestro 1596837868705199'}
+        str_out_1 = 'Maestro 1596 83** **** 5199 '
 
-        str_out = 'Maestro 1596 83** **** 5199 '
+        dict_in_2 = {'fro': 'Maestro 1596837868705199'}
+        str_out_2 = 'Нет данных '
 
-        self.assertEqual(function.print_from(dict_in), str_out)
+        self.assertEqual(function.print_from(dict_in_1), str_out_1)
+        self.assertEqual(function.print_from(dict_in_2), str_out_2)
 
