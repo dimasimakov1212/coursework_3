@@ -11,21 +11,27 @@ class TestFunction(unittest.TestCase):
         self.assertEqual(function.print_date({'date': '2019-08-26T10:50:58.294041'}), '26.08.2019')
 
     def test_data_for_work(self):
-        list_in = [{'id': 441945886, 'state': 'EXECUTED',
-                    'date': '2019-08-26T10:50:58.294041',
-                    'operationAmount': {'amount': '31957.58', 'currency': {'name': 'руб.', 'code': 'RUB'}},
-                    'description': 'Перевод организации',
-                    'from': 'Maestro 1596837868705199', 'to': 'Счет 64686473678894779589'},
-                   {'id': 615064591, 'state': 'CANCELED',
-                    'date': '2018-10-14T08:21:33.419441',
-                    'operationAmount': {'amount': '77751.04', 'currency': {'name': 'руб.', 'code': 'RUB'}},
-                    'description': 'Перевод с карты на счет',
-                    'from': 'Maestro 3928549031574026', 'to': 'Счет 84163357546688983493'}]
+        list_in = [{'id': 441945886, 'state': 'EXECUTED'},
+                   {'id': 615064591, 'state': 'CANCELED'},
+                   {}]
 
-        list_out = [{'id': 441945886, 'state': 'EXECUTED',
-                     'date': '2019-08-26T10:50:58.294041',
-                     'operationAmount': {'amount': '31957.58', 'currency': {'name': 'руб.', 'code': 'RUB'}},
-                     'description': 'Перевод организации',
-                     'from': 'Maestro 1596837868705199', 'to': 'Счет 64686473678894779589'}]
+        list_out = [{'id': 441945886, 'state': 'EXECUTED'}]
+
         self.assertEqual(function.data_for_work(list_in), list_out)
+
+    def test_sorted_data(self):
+        list_in = [{'date': '2019-08-26T10:50:58.294041'},
+                   {'date': '2019-07-03T18:35:29.512364'},
+                   {'date': '2018-06-30T02:08:58.425572'},
+                   {'date': '2018-03-23T10:45:06.972075'},
+                   {'date': '2019-04-04T23:20:05.206878'},
+                   {'date': '2019-03-23T01:09:46.296404'}]
+
+        list_out = [{'date': '2018-06-30T02:08:58.425572'},
+                    {'date': '2019-03-23T01:09:46.296404'},
+                    {'date': '2019-04-04T23:20:05.206878'},
+                    {'date': '2019-07-03T18:35:29.512364'},
+                    {'date': '2019-08-26T10:50:58.294041'}]
+
+        self.assertEqual(function.sorted_data(list_in), list_out)
 

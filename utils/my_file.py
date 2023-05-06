@@ -4,10 +4,11 @@ from main import file_input
 # проверяем загрузку данных и вид данных
 a = (import_data(file_input))
 b = a[0]
-print(b)
-print(a[13])
-for key, item in b.items():
-    print(key, item)
+for i in range(6):
+    print(a[i])
+
+# for key, item in b.items():
+#     print(key, item)
 
 # проверка формирования нового списка данных
 # a = (import_data(file_input))
