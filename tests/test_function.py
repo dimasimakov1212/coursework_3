@@ -37,7 +37,6 @@ class TestFunction(unittest.TestCase):
 
     def test_print_description(self):
         dict_in = {'description': 'Перевод организации'}
-
         str_out = 'Перевод организации'
 
         self.assertEqual(function.print_description(dict_in), str_out)
@@ -51,4 +50,10 @@ class TestFunction(unittest.TestCase):
 
         self.assertEqual(function.print_from(dict_in_1), str_out_1)
         self.assertEqual(function.print_from(dict_in_2), str_out_2)
+
+    def test_print_to(self):
+        dict_in = {'to': 'Счет 64686473678894779589'}
+        str_out = 'Счет **9589'
+
+        self.assertEqual(function.print_to(dict_in), str_out)
 
