@@ -63,3 +63,9 @@ class TestFunction(unittest.TestCase):
 
         self.assertEqual(function.print_amount(dict_in), str_out)
 
+    def test_print_currency(self):
+        dict_in = {'operationAmount': {'amount': '79114.93', 'currency': {'name': 'USD', 'code': 'USD'}}}
+        str_out = 'USD'
+
+        self.assertEqual(function.print_currency(dict_in), str_out)
+
